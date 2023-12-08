@@ -64,6 +64,7 @@ func main() {
 			})
 		}
 	}
+	mapsInOrder = append(mapsInOrder, mapToDestination)
 
 	var lowestLocation int
 

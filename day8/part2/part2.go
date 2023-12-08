@@ -64,17 +64,19 @@ func main() {
 			foundAllEndingInZ = true
 		}
 	}
-	fmt.Println(numberOfStepsPerStart)
-	fmt.Println(LCM(numberOfStepsPerStart[0], numberOfStepsPerStart[1],
-		numberOfStepsPerStart[2], numberOfStepsPerStart[3], numberOfStepsPerStart[4],
-		numberOfStepsPerStart[5]))
+	fmt.Println(LCM(numberOfStepsPerStart))
 }
 
-func LCM(a, b int, integers ...int) int {
+func LCM(integers []int) int {
+	if len(integers) < 2 {
+		panic("requires at least two numbers")
+	}
+	a := integers[0]
+	b := integers[1]
 	result := a * b / GCD(a, b)
 
-	for i := 0; i < len(integers); i++ {
-		result = LCM(result, integers[i])
+	for i := 2; i < len(integers); i++ {
+		result = LCM([]int{result, integers[i]})
 	}
 
 	return result
